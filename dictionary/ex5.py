@@ -6,7 +6,11 @@
 # 'gmail.com': 1, 'caret.cam.ac.uk': 1, 'iupui.edu': 8}
 
 fName = input("Enter your file name: ")
-doc = open(fName)
+try:
+    doc = open(fName)
+except:
+    print("invalid file name")
+    quit()
 
 dic = {}
 
@@ -15,5 +19,6 @@ for line in doc:
     if len(words)<2 or words[0]!="From":
         continue
     else:
-        dic[words[1]] = dic.get(words[1],0) + 1
+        domain = words[1].split('@')[1]
+        dic[domain] = dic.get(domain,0) + 1
 print(dic)
