@@ -9,7 +9,11 @@
 # 'ray@media.berkeley.edu': 1}
 
 fName = input("Enter your file name: ")
-doc = open(fName)
+try:
+    doc = open(fName)
+except:
+    print("invalid file name")
+    quit()
 
 dic = {}
 
